@@ -83,7 +83,8 @@ class AppCell: UICollectionViewCell {
     let iv = UIImageView()
     iv.image = UIImage(named: "frozen")
     iv.contentMode = .scaleAspectFill
-    
+    iv.layer.cornerRadius = 16
+    iv.layer.masksToBounds = true
     return iv
   }()
   
