@@ -79,7 +79,16 @@ class AppCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
+  let imageView: UIImageView = {
+    let iv = UIImageView()
+    iv.image = UIImage(named: "frozen")
+    iv.contentMode = .scaleAspectFill
+    
+    return iv
+  }()
+  
   func setupViews() {
-    backgroundColor = .black
+    addSubview(imageView)
+    imageView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.width)
   }
 }
