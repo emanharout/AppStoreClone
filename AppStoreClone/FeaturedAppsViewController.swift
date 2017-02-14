@@ -39,7 +39,7 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
   
   // Set Cell Size
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: view.frame.width, height: 150.0)
+    return CGSize(width: view.frame.width, height: 230.0)
   }
   
 }
