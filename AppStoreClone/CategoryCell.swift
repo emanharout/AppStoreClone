@@ -24,25 +24,26 @@ class CategoryCell: UICollectionViewCell {
   }
   
   func setupViews() {
-    backgroundColor = .black
+    backgroundColor = .clear
     
     addSubview(appsCollectionView)
     appsCollectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    appsCollectionView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8.0).isActive = true
-    appsCollectionView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8.0).isActive = true
+    appsCollectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    appsCollectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
     appsCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
   }
   
   // Create collectionView within cell
   lazy var appsCollectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .horizontal
     let appsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     
     appsCollectionView.delegate = self
     appsCollectionView.dataSource = self
     appsCollectionView.register(AppCell.self, forCellWithReuseIdentifier: self.appCellId)
     
-    appsCollectionView.backgroundColor = .blue
+    appsCollectionView.backgroundColor = .clear
     appsCollectionView.translatesAutoresizingMaskIntoConstraints = false
     return appsCollectionView
   }()
@@ -62,7 +63,7 @@ extension CategoryCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
   
   // Size Cells
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 150, height: frame.height)
+    return CGSize(width: 100, height: frame.height)
   }
   
 }
@@ -79,6 +80,6 @@ class AppCell: UICollectionViewCell {
   }
   
   func setupViews() {
-    backgroundColor = .red
+    backgroundColor = .black
   }
 }
