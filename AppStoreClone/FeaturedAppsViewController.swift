@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeaturedAppsController: UICollectionViewController {
+class FeaturedAppsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
   private let cellId = "cellId"
 
@@ -36,22 +36,10 @@ class FeaturedAppsController: UICollectionViewController {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
     return cell
   }
-}
-
-// Custom Cell Class
-class CategoryCell: UICollectionViewCell {
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    
-    setupViews()
+  // Set Cell Size
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: view.frame.width, height: 150.0)
   }
   
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  func setupViews() {
-    backgroundColor = .red
-  }
 }
