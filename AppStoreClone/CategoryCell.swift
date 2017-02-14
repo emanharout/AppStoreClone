@@ -23,14 +23,28 @@ class CategoryCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
+  let dividerLineView: UIView = {
+    let view = UIView()
+    view.backgroundColor = UIColor(white: 0.4, alpha: 0.4)
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  
   func setupViews() {
     backgroundColor = .clear
     
     addSubview(appsCollectionView)
+    addSubview(dividerLineView)
+    
     appsCollectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
     appsCollectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
     appsCollectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
     appsCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    
+    dividerLineView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+    dividerLineView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 14).isActive = true
+    dividerLineView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+    dividerLineView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
   }
   
   // Create collectionView within cell
