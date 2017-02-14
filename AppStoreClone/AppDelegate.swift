@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window?.makeKeyAndVisible()
     
     let featuredAppsController = FeaturedAppsController(collectionViewLayout: UICollectionViewFlowLayout())
-    window?.rootViewController = featuredAppsController
+    window?.rootViewController = UINavigationController(rootViewController: featuredAppsController)
     return true
   }
 
