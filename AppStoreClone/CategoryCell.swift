@@ -66,6 +66,11 @@ extension CategoryCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
     return CGSize(width: 100, height: frame.height)
   }
   
+  // Margin Insets
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsetsMake(0, 14, 0, 14)
+  }
+  
 }
 
 class AppCell: UICollectionViewCell {
