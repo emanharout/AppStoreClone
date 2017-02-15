@@ -9,6 +9,24 @@
 import UIKit
 
 class AppCell: UICollectionViewCell {
+  
+  var app: App? {
+    didSet {
+      if let name = app?.name {
+        nameLabel.text = app?.name
+      }
+      
+      categoryLabel.text = app?.category
+      
+      if let price = app?.price {
+        priceLabel.text = "$\(price)"
+      } else {
+        priceLabel.text = ""
+      }
+      
+    }
+  }
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     
