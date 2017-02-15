@@ -11,6 +11,14 @@ import UIKit
 // Custom Cell Class
 class CategoryCell: UICollectionViewCell {
   
+  var appCategory: AppCategory? {
+    didSet {
+      
+      if let name = appCategory?.name {
+        nameLabel.text = name
+      }
+    }
+  }
   let appCellId = "AppCellId"
   
   override init(frame: CGRect) {
