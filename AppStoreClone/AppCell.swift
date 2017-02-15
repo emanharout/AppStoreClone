@@ -13,7 +13,7 @@ class AppCell: UICollectionViewCell {
   var app: App? {
     didSet {
       if let name = app?.name {
-        nameLabel.text = app?.name
+        nameLabel.text = name
       }
       
       categoryLabel.text = app?.category
@@ -22,6 +22,10 @@ class AppCell: UICollectionViewCell {
         priceLabel.text = "$\(price)"
       } else {
         priceLabel.text = ""
+      }
+      
+      if let imageName = app?.imageName {
+        imageView.image = UIImage(named: imageName)
       }
       
     }
