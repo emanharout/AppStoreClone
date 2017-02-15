@@ -27,7 +27,7 @@ class AppCategory: NSObject {
     }
   }
   
-  static func fetchFeaturedApps() {
+  static func fetchFeaturedApps(completionHandler: @escaping ([AppCategory])->()) {
     let urlString = "http://www.statsallday.com/appstore/featured"
     
     URLSession.shared.dataTask(with: URL(string: urlString)!) { (data, response, error) in
@@ -47,6 +47,11 @@ class AppCategory: NSObject {
           // setValuesForKeys() sets apps property as Dictionaries instead of [App], hence override func setValue
           appCategory.setValuesForKeys(dict)
           appCategories.append(appCategory)
+          
+          DispatchQueue.main.async {
+            completionHandler(appCategories)
+          }
+          
         }
       } catch let error {
         print(error)

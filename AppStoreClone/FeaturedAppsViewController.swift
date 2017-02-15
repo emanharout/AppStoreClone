@@ -20,7 +20,11 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
     collectionView?.backgroundColor = .white
     collectionView?.register(CategoryCell.self, forCellWithReuseIdentifier: cellId)
     
-    appCategories = AppCategory.sampleAppCategories()
+    AppCategory.fetchFeaturedApps { (appCategories) in
+      
+      self.appCategories = appCategories
+      self.collectionView?.reloadData()
+    }
   }
 
   override func didReceiveMemoryWarning() {
