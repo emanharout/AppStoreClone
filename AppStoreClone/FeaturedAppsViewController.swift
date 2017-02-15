@@ -11,13 +11,16 @@ import UIKit
 class FeaturedAppsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
   private let cellId = "cellId"
+  
+  var appCategories: [AppCategory]?
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
     
     collectionView?.backgroundColor = .white
     collectionView?.register(CategoryCell.self, forCellWithReuseIdentifier: cellId)
+    
+    appCategories = AppCategory.sampleAppCategories()
   }
 
   override func didReceiveMemoryWarning() {
