@@ -35,6 +35,13 @@ class LargeCategoryCell: CategoryCell {
 extension LargeCategoryCell {
   fileprivate class LargeAppCell: AppCell {
     fileprivate override func setupViews() {
+      imageView.translatesAutoresizingMaskIntoConstraints = false
+      addSubview(imageView)
+      
+      imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+      imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+      imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2).isActive = true
+      imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -14).isActive = true
       
     }
   }
