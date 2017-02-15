@@ -12,6 +12,7 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
   
   private let cellId = "cellId"
   private let largeCellId = "largeCellId"
+  private let headerId = "headerId"
   
   var appCategories: [AppCategory]?
 
@@ -21,6 +22,7 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
     collectionView?.backgroundColor = .white
     collectionView?.register(CategoryCell.self, forCellWithReuseIdentifier: cellId)
     collectionView?.register(LargeCategoryCell.self, forCellWithReuseIdentifier: largeCellId)
+    collectionView?.register(CollectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
     
     AppCategory.fetchFeaturedApps { (appCategories) in
       
@@ -61,6 +63,17 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
       return CGSize(width: view.frame.width, height: 160.0)
     }
     return CGSize(width: view.frame.width, height: 230.0)
+  }
+  
+  // Return size for Header View
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    return CGSize(width: view.frame.height, height: 150)
+  }
+  
+  // Return Header View
+  override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! CollectionHeader
+    return header
   }
   
 }

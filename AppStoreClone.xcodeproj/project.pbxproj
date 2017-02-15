@@ -16,6 +16,7 @@
 		0333265B1E541E210064619B /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333265A1E541E210064619B /* AppCell.swift */; };
 		0333265F1E541F2C0064619B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333265E1E541F2C0064619B /* Models.swift */; };
 		03970B6B1E54C920009B6537 /* LargeCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03970B6A1E54C920009B6537 /* LargeCategoryCell.swift */; };
+		03970B6D1E54EFCD009B6537 /* CollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03970B6C1E54EFCD009B6537 /* CollectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0333265A1E541E210064619B /* AppCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
 		0333265E1E541F2C0064619B /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		03970B6A1E54C920009B6537 /* LargeCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeCategoryCell.swift; sourceTree = "<group>"; };
+		03970B6C1E54EFCD009B6537 /* CollectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				033326581E536EDF0064619B /* CategoryCell.swift */,
 				0333265A1E541E210064619B /* AppCell.swift */,
 				03970B6A1E54C920009B6537 /* LargeCategoryCell.swift */,
+				03970B6C1E54EFCD009B6537 /* CollectionHeader.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				033326471E5366480064619B /* AppDelegate.swift in Sources */,
 				033326591E536EDF0064619B /* CategoryCell.swift in Sources */,
 				0333265F1E541F2C0064619B /* Models.swift in Sources */,
+				03970B6D1E54EFCD009B6537 /* CollectionHeader.swift in Sources */,
 				03970B6B1E54C920009B6537 /* LargeCategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
