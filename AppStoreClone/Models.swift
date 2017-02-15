@@ -31,7 +31,21 @@ class AppCategory: NSObject {
     
     bestNewAppsCategory.apps = apps
     
-    return [bestNewAppsCategory]
+    let bestNewGamesCategory = AppCategory()
+    bestNewGamesCategory.name = "Best New Games"
+    
+    var bestNewGamesApps = [App]()
+    
+    let telepaintApp = App()
+    telepaintApp.name = "Telepaint"
+    telepaintApp.category = "Games"
+    telepaintApp.price = NSNumber(floatLiteral: 2.99)
+    
+    bestNewGamesApps.append(telepaintApp)
+    
+    bestNewGamesCategory.apps = bestNewGamesApps
+    
+    return [bestNewAppsCategory, bestNewGamesCategory ]
   }
   
 }
