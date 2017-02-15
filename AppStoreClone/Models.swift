@@ -12,6 +12,48 @@ class AppCategory: NSObject {
   
   var name: String?
   var apps: [App]?
+  var type: String?
+  
+  override func setValue(_ value: Any?, forKey key: String) {
+    if key == "apps" {
+      apps = [App]()
+      for dict in value as! [[String: AnyObject]] {
+        let app = App()
+        app.setValuesForKeys(dict)
+        apps?.append(app)
+      }
+    } else {
+      super.setValue(value, forKey: key)
+    }
+  }
+  
+  static func fetchFeaturedApps() {
+    let urlString = "http://www.statsallday.com/appstore/featured"
+    
+    URLSession.shared.dataTask(with: URL(string: urlString)!) { (data, response, error) in
+      
+      guard error == nil else {
+        print(error!)
+        return
+      }
+      
+      do {
+        let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! Dictionary<String, Any>
+        var appCategories = [AppCategory]()
+        
+        for dict in (json["categories"] as! [[String: Any]]) {
+          
+          let appCategory = AppCategory()
+          // setValuesForKeys() sets apps property as Dictionaries instead of [App], hence override func setValue
+          appCategory.setValuesForKeys(dict)
+          appCategories.append(appCategory)
+        }
+      } catch let error {
+        print(error)
+      }
+      
+    }.resume()
+  }
   
   static func sampleAppCategories() -> [AppCategory] {
     
@@ -38,6 +80,7 @@ class AppCategory: NSObject {
     
     let telepaintApp = App()
     telepaintApp.name = "Telepaint"
+    telepaintApp.imageName = "telepaint"
     telepaintApp.category = "Games"
     telepaintApp.price = NSNumber(floatLiteral: 2.99)
     
