@@ -14,6 +14,7 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
   private let largeCellId = "largeCellId"
   private let headerId = "headerId"
   
+  var featuredApps: FeaturedApps?
   var appCategories: [AppCategory]?
 
   override func viewDidLoad() {
@@ -24,9 +25,9 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
     collectionView?.register(LargeCategoryCell.self, forCellWithReuseIdentifier: largeCellId)
     collectionView?.register(CollectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
     
-    AppCategory.fetchFeaturedApps { (appCategories) in
-      
-      self.appCategories = appCategories
+    AppCategory.fetchFeaturedApps { (featuredApps) in
+      self.featuredApps = featuredApps
+      self.appCategories = featuredApps.appCategories
       self.collectionView?.reloadData()
     }
   }
@@ -73,7 +74,7 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
   // Return Header View
   override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! CollectionHeader
-    header.appCategory = appCategories?.first
+    header.appCategory = featuredApps?.bannerCategory
     
     return header
   }

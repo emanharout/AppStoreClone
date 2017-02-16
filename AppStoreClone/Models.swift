@@ -8,6 +8,29 @@
 
 import UIKit
 
+class FeaturedApps: NSObject {
+  
+  var bannerCategory: AppCategory?
+  var appCategories: [AppCategory]?
+
+  override func setValue(_ value: Any?, forKey key: String) {
+    if key == "categories" {
+      appCategories = [AppCategory]()
+      
+      for dict in value as! [[String: Any]] {
+        let appCategory = AppCategory()
+        appCategory.setValuesForKeys(dict)
+        appCategories?.append(appCategory)
+      }
+    } else if key == "bannerCategory" {
+      bannerCategory = AppCategory()
+      bannerCategory?.setValuesForKeys(value as! [String: Any])
+    } else {
+      super.setValue(value, forKey: key)
+    }
+  }
+}
+
 class AppCategory: NSObject {
   
   var name: String?
@@ -27,7 +50,7 @@ class AppCategory: NSObject {
     }
   }
   
-  static func fetchFeaturedApps(completionHandler: @escaping ([AppCategory])->()) {
+  static func fetchFeaturedApps(completionHandler: @escaping (FeaturedApps)->()) {
     let urlString = "http://www.statsallday.com/appstore/featured"
     
     URLSession.shared.dataTask(with: URL(string: urlString)!) { (data, response, error) in
@@ -39,20 +62,14 @@ class AppCategory: NSObject {
       
       do {
         let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! Dictionary<String, Any>
-        var appCategories = [AppCategory]()
         
-        for dict in (json["categories"] as! [[String: Any]]) {
-          
-          let appCategory = AppCategory()
-          // setValuesForKeys() sets apps property as Dictionaries instead of [App], hence override func setValue
-          appCategory.setValuesForKeys(dict)
-          appCategories.append(appCategory)
-          
-          DispatchQueue.main.async {
-            completionHandler(appCategories)
-          }
-          
+        let featuredApps = FeaturedApps()
+        featuredApps.setValuesForKeys(json)
+        
+        DispatchQueue.main.async {
+          completionHandler(featuredApps)
         }
+          
       } catch let error {
         print(error)
       }
