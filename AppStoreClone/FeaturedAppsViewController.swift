@@ -73,6 +73,8 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
   // Return Header View
   override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! CollectionHeader
+    header.appCategory = appCategories?.first
+    
     return header
   }
   

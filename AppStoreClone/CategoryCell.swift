@@ -17,6 +17,10 @@ class CategoryCell: UICollectionViewCell {
       if let name = appCategory?.name {
         nameLabel.text = name
       }
+      
+      // Despite CollectionHeader being a subclass of CategoryCell,
+      // it won't display appCategory data unless reload upon assignment
+      appsCollectionView.reloadData()
     }
   }
   let appCellId = "AppCellId"
@@ -53,6 +57,10 @@ class CategoryCell: UICollectionViewCell {
     addSubview(dividerLineView)
     addSubview(nameLabel)
 
+    appsCollectionView.delegate = self
+    appsCollectionView.dataSource = self
+    appsCollectionView.register(AppCell.self, forCellWithReuseIdentifier: self.appCellId)
+    
 //    addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
 //    addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": dividerLineView]))
 //    addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appsCollectionView]))
@@ -78,10 +86,6 @@ class CategoryCell: UICollectionViewCell {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
     let appsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    
-    appsCollectionView.delegate = self
-    appsCollectionView.dataSource = self
-    appsCollectionView.register(AppCell.self, forCellWithReuseIdentifier: self.appCellId)
     
     appsCollectionView.backgroundColor = .clear
     appsCollectionView.translatesAutoresizingMaskIntoConstraints = false
