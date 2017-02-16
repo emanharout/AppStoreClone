@@ -68,7 +68,7 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
   
   // Return size for Header View
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    return CGSize(width: view.frame.height, height: 150)
+    return CGSize(width: view.frame.width, height: 120)
   }
   
   // Return Header View

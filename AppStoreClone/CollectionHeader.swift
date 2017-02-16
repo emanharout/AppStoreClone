@@ -29,7 +29,7 @@ class CollectionHeader: CategoryCell {
   
   // Collection View Functions
   override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 200, height: frame.height - 32)
+    return CGSize(width: frame.width / 2 + 50, height: frame.height)
   }
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -46,13 +46,17 @@ class CollectionHeader: CategoryCell {
   fileprivate class BannerCell: AppCell {
     
     fileprivate override func setupViews() {
+      imageView.layer.borderColor = UIColor.init(white: 0.5, alpha: 0.5).cgColor
+      imageView.layer.borderWidth = 0.5
+      imageView.layer.cornerRadius = 0
+      
       imageView.translatesAutoresizingMaskIntoConstraints = false
       addSubview(imageView)
       
       imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
       imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-      imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2).isActive = true
-      imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -14).isActive = true
+      imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+      imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
       
     }
   }
