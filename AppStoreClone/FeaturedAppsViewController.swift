@@ -30,6 +30,8 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
       self.appCategories = featuredApps.appCategories
       self.collectionView?.reloadData()
     }
+    
+    navigationItem.title = "Featured Apps"
   }
 
   override func didReceiveMemoryWarning() {
