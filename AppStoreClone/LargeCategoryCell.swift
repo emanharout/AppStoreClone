@@ -25,7 +25,7 @@ class LargeCategoryCell: CategoryCell {
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.largeAppCellId, for: indexPath) as! AppCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: largeAppCellId, for: indexPath) as! LargeAppCell
     cell.app = appCategory?.apps?[indexPath.item]
     return cell
   }
@@ -33,7 +33,9 @@ class LargeCategoryCell: CategoryCell {
 }
 
 extension LargeCategoryCell {
+  
   fileprivate class LargeAppCell: AppCell {
+    
     fileprivate override func setupViews() {
       imageView.translatesAutoresizingMaskIntoConstraints = false
       addSubview(imageView)
