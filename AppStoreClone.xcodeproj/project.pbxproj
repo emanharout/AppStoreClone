@@ -33,7 +33,7 @@
 		0333265E1E541F2C0064619B /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		03970B6A1E54C920009B6537 /* LargeCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeCategoryCell.swift; sourceTree = "<group>"; };
 		03970B6C1E54EFCD009B6537 /* CollectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionHeader.swift; sourceTree = "<group>"; };
-		03A0096F1E56203600CB7F01 /* AppDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
+		03A0096F1E56203600CB7F01 /* AppDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDetailController.swift; path = ../AppDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +50,6 @@
 		0333263A1E5366480064619B = {
 			isa = PBXGroup;
 			children = (
-				03A0096F1E56203600CB7F01 /* AppDetailController.swift */,
 				033326451E5366480064619B /* AppStoreClone */,
 				033326441E5366480064619B /* Products */,
 			);
@@ -69,6 +68,7 @@
 			children = (
 				0333265C1E541E3D0064619B /* View */,
 				033326481E5366480064619B /* FeaturedAppsViewController.swift */,
+				03A0096F1E56203600CB7F01 /* AppDetailController.swift */,
 				0333265E1E541F2C0064619B /* Models.swift */,
 				0333265D1E541E590064619B /* Supporting */,
 			);
