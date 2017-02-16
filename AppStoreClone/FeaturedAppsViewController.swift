@@ -33,10 +33,10 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
     
     navigationItem.title = "Featured Apps"
   }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  
+  func showAppDetail(for app: App) {
+    let appDetailController = UIViewController()
+    navigationController?.pushViewController(appDetailController, animated: true)
   }
 
   // MARK: Collection View Methods
@@ -55,6 +55,7 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
     }
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
+    cell.featuredAppsController = self
     cell.appCategory = appCategories?[indexPath.item]
     return cell
   }

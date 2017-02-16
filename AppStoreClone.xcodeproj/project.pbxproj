@@ -17,6 +17,7 @@
 		0333265F1E541F2C0064619B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333265E1E541F2C0064619B /* Models.swift */; };
 		03970B6B1E54C920009B6537 /* LargeCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03970B6A1E54C920009B6537 /* LargeCategoryCell.swift */; };
 		03970B6D1E54EFCD009B6537 /* CollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03970B6C1E54EFCD009B6537 /* CollectionHeader.swift */; };
+		03A009701E56203600CB7F01 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A0096F1E56203600CB7F01 /* AppDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		0333265E1E541F2C0064619B /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		03970B6A1E54C920009B6537 /* LargeCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeCategoryCell.swift; sourceTree = "<group>"; };
 		03970B6C1E54EFCD009B6537 /* CollectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionHeader.swift; sourceTree = "<group>"; };
+		03A0096F1E56203600CB7F01 /* AppDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 		0333263A1E5366480064619B = {
 			isa = PBXGroup;
 			children = (
+				03A0096F1E56203600CB7F01 /* AppDetailController.swift */,
 				033326451E5366480064619B /* AppStoreClone */,
 				033326441E5366480064619B /* Products */,
 			);
@@ -172,6 +175,7 @@
 				0333265B1E541E210064619B /* AppCell.swift in Sources */,
 				033326471E5366480064619B /* AppDelegate.swift in Sources */,
 				033326591E536EDF0064619B /* CategoryCell.swift in Sources */,
+				03A009701E56203600CB7F01 /* AppDetailController.swift in Sources */,
 				0333265F1E541F2C0064619B /* Models.swift in Sources */,
 				03970B6D1E54EFCD009B6537 /* CollectionHeader.swift in Sources */,
 				03970B6B1E54C920009B6537 /* LargeCategoryCell.swift in Sources */,

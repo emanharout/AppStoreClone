@@ -11,6 +11,8 @@ import UIKit
 // Custom Cell Class
 class CategoryCell: UICollectionViewCell {
   
+  var featuredAppsController: FeaturedAppsController?
+  
   var appCategory: AppCategory? {
     didSet {
       
@@ -114,6 +116,13 @@ extension CategoryCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
   // Margin Insets
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return UIEdgeInsetsMake(0, 14, 0, 14)
+  }
+  
+  // Cell Selection
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if let app = appCategory?.apps?[indexPath.item] {
+      featuredAppsController?.showAppDetail(for: app)
+    }
   }
   
 }
