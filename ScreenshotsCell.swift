@@ -26,10 +26,20 @@ class ScreenshotsCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataS
   
   private let cellId = "cellId"
   
+  let dividerView: UIView = {
+    let divider = UIView()
+    divider.backgroundColor = UIColor.init(white: 0.4, alpha: 0.4)
+    return divider
+  }()
+  
   override func setupViews() {
     super.setupViews()
+    
     collectionView.translatesAutoresizingMaskIntoConstraints = false
+    dividerView.translatesAutoresizingMaskIntoConstraints = false
+    
     addSubview(collectionView)
+    addSubview(dividerView)
     
     collectionView.dataSource = self
     collectionView.delegate = self
@@ -40,6 +50,11 @@ class ScreenshotsCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataS
     collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
     collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    
+    dividerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+    dividerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+    dividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    dividerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
   }
   
   // Number of Items

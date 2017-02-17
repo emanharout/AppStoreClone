@@ -51,12 +51,14 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
   
   private let headerId = "headerId"
   private let cellId = "cellId"
+  private let descriptionCellId = "descriptionCellId"
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     collectionView?.register(AppDetailHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
     collectionView?.register(ScreenshotsCell.self, forCellWithReuseIdentifier: cellId)
+    collectionView?.register(AppDetailDescriptionCell.self, forCellWithReuseIdentifier: descriptionCellId)
     
     collectionView?.backgroundColor = .white
     collectionView?.alwaysBounceVertical = true
@@ -78,13 +80,17 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
   
   // Number of Items
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 1
+    return 2
   }
   
   // Dequeue Cell
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ScreenshotsCell
     
+    if indexPath.item == 1 {
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptionCellId, for: indexPath) as! AppDetailDescriptionCell
+      return cell
+    }
     cell.app = app
     
     return cell
@@ -224,5 +230,26 @@ class BaseCell: UICollectionViewCell {
     
   }
   
+}
+
+class AppDetailDescriptionCell: BaseCell {
+  
+  let textView: UITextView = {
+    let tv = UITextView()
+    tv.text = "SAMPLE DESC"
+    return tv
+  }()
+  
+  override func setupViews() {
+    super.setupViews()
+    
+    addSubview(textView)
+    textView.translatesAutoresizingMaskIntoConstraints = false
+    
+    textView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
+    textView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
+    textView.topAnchor.constraint(equalTo: self.topAnchor, constant: 4).isActive = true
+    textView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4).isActive = true
+  }
   
 }
