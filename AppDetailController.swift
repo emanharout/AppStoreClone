@@ -48,6 +48,9 @@ class AppDetailHeader: BaseCell {
       if let imageName = app?.imageName {
         imageView.image = UIImage(named: imageName)
       }
+      if let appName = app?.name {
+        nameLabel.text = appName
+      }
     }
   }
   
@@ -56,6 +59,12 @@ class AppDetailHeader: BaseCell {
     sc.tintColor = .darkGray
     sc.selectedSegmentIndex = 0
     return sc
+  }()
+  
+  let nameLabel: UILabel = {
+    let label = UILabel()
+    label.font = UIFont.systemFont(ofSize: 16)
+    return label
   }()
   
   let imageView: UIImageView = {
@@ -69,9 +78,11 @@ class AppDetailHeader: BaseCell {
   override func setupViews(){
     addSubview(imageView)
     addSubview(segmentedControl)
+    addSubview(nameLabel)
     
     imageView.translatesAutoresizingMaskIntoConstraints = false
     segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+    nameLabel.translatesAutoresizingMaskIntoConstraints = false
     
     imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14).isActive = true
     imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 14).isActive = true
@@ -82,6 +93,11 @@ class AppDetailHeader: BaseCell {
     segmentedControl.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40).isActive = true
     segmentedControl.heightAnchor.constraint(equalToConstant: 34).isActive = true
     segmentedControl.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+    
+    nameLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8).isActive = true
+    nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+    nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 14).isActive = true
+    nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
     
     // Visual Format Helper Func
 //    addConstraints(with: "H:|-14-[v0(100)]", views: imageView)
