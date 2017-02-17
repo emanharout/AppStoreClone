@@ -10,6 +10,12 @@ import UIKit
 
 class AppDetailController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
+  var app: App? {
+    didSet {
+      navigationItem.title = app?.name 
+    }
+  }
+  
   private let headerId = "headerId"
   
   override func viewDidLoad() {
@@ -41,8 +47,17 @@ class AppDetailHeader: BaseCell {
   }()
   
   override func setupViews(){
-    
     backgroundColor = .blue
+    
+    addSubview(imageView)
+    
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.backgroundColor = .yellow
+    
+    imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+    imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+    imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+    imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
   }
   
 }
