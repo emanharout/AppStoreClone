@@ -12,7 +12,7 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
   
   var app: App? {
     didSet {
-      navigationItem.title = app?.name 
+      navigationItem.title = app?.name
     }
   }
   
@@ -23,12 +23,15 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
     
     collectionView?.register(AppDetailHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
     collectionView?.backgroundColor = .white
+    collectionView?.alwaysBounceVertical = true
   }
   
   // Return Header View
   override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     
-    let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
+    let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! AppDetailHeader
+    header.app = app
+    
     return header
   }
   
@@ -40,24 +43,36 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
 
 class AppDetailHeader: BaseCell {
   
+  var app: App? {
+    didSet {
+      if let imageName = app?.imageName {
+        imageView.image = UIImage(named: imageName)
+      }
+    }
+  }
+  
   let imageView: UIImageView = {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFill
+    iv.layer.cornerRadius = 16
+    iv.layer.masksToBounds = true
     return iv
   }()
   
   override func setupViews(){
-    backgroundColor = .blue
-    
     addSubview(imageView)
     
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.backgroundColor = .yellow
     
-    imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-    imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-    imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14).isActive = true
+    imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 14).isActive = true
+    
+    imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+    
+    // Visual Format
+//    addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0(100)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
   }
   
 }
