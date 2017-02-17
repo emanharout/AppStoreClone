@@ -122,5 +122,17 @@ class App: NSObject {
   var category: String?
   var imageName: String?
   var price: NSNumber?
+  var screenshots: [String]?
+  var desc: String?
+  var appInformation: Any?
+  
+  // Description is already a property inherited from NSObject so we have to set values from keys mapped from JSON to desc instead
+  override func setValue(_ value: Any?, forKey key: String) {
+    if key == "description" {
+      desc = value as? String
+    } else {
+      super.setValue(value, forKey: key)
+    }
+  }
   
 }

@@ -12,7 +12,40 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
   
   var app: App? {
     didSet {
-//      navigationItem.title = app?.name
+      
+      // escape mechanism
+      if app?.screenshots != nil {
+        return
+      }
+      
+      if let id = app?.id {
+        let urlString = "http://www.statsallday.com/appstore/appdetail?id=\(id)"
+        URLSession.shared.dataTask(with: URL(string: urlString)!, completionHandler: { (data, response, error) in
+          guard error == nil else {
+            print(error!)
+            return
+          }
+          
+          do {
+            let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! Dictionary<String, Any>
+            
+            let appDetail = App()
+            appDetail.setValuesForKeys(json)
+            
+            // This triggers the didSet in an infinite loop, must add escape mechanism before setting app value
+            self.app = appDetail
+            
+            DispatchQueue.main.async {
+              self.collectionView?.reloadData()
+            }
+            
+          } catch let error {
+            print(error)
+          }
+
+        }).resume()
+      }
+      
     }
   }
   

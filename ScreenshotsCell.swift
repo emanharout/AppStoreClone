@@ -14,6 +14,7 @@ class ScreenshotsCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataS
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
     let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    cv.backgroundColor = .clear
     return cv
   }()
   
@@ -57,9 +58,24 @@ class ScreenshotsCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataS
 }
 
 class ScreenshotImageCell: BaseCell {
+  
+  let imageView: UIImageView = {
+    let iv = UIImageView()
+    iv.backgroundColor = .green
+    iv.contentMode = .scaleAspectFill
+    return iv
+  }()
+  
   override func setupViews() {
     super.setupViews()
     
-    backgroundColor = .yellow
+    addSubview(imageView)
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    
+    imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+    imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+    imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+    imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+
   }
 }
