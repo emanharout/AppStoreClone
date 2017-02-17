@@ -12,7 +12,7 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
   
   var app: App? {
     didSet {
-      navigationItem.title = app?.name
+//      navigationItem.title = app?.name
     }
   }
   
@@ -51,6 +51,10 @@ class AppDetailHeader: BaseCell {
       if let appName = app?.name {
         nameLabel.text = appName
       }
+      
+      if let price = app?.price {
+        buyButton.setTitle("$\(price)", for: .normal)
+      }
     }
   }
   
@@ -75,14 +79,34 @@ class AppDetailHeader: BaseCell {
     return iv
   }()
   
+  let buyButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("BUY", for: .normal)
+    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+    button.layer.borderColor = UIColor(red: 0, green: 129/255, blue: 250/255, alpha: 1).cgColor
+     button.layer.borderWidth = 1
+    button.layer.cornerRadius = 5
+    return button
+  }()
+  
+  let dividerView: UIView = {
+    let divider = UIView()
+    divider.backgroundColor = UIColor.init(white: 0.4, alpha: 0.4)
+    return divider
+  }()
+  
   override func setupViews(){
     addSubview(imageView)
     addSubview(segmentedControl)
     addSubview(nameLabel)
+    addSubview(buyButton)
+    addSubview(dividerView)
     
     imageView.translatesAutoresizingMaskIntoConstraints = false
     segmentedControl.translatesAutoresizingMaskIntoConstraints = false
     nameLabel.translatesAutoresizingMaskIntoConstraints = false
+    buyButton.translatesAutoresizingMaskIntoConstraints = false
+    dividerView.translatesAutoresizingMaskIntoConstraints = false
     
     imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14).isActive = true
     imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 14).isActive = true
@@ -98,6 +122,16 @@ class AppDetailHeader: BaseCell {
     nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
     nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 14).isActive = true
     nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    
+    buyButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+    buyButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -14).isActive = true
+    buyButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+    buyButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -56 ).isActive = true
+    
+    dividerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+    dividerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+    dividerView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+    dividerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
     
     // Visual Format Helper Func
 //    addConstraints(with: "H:|-14-[v0(100)]", views: imageView)
