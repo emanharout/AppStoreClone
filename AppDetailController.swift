@@ -53,6 +53,23 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
   private let cellId = "cellId"
   private let descriptionCellId = "descriptionCellId"
   
+  private func descriptionAttributedText() -> NSAttributedString {
+    let attributedText = NSMutableAttributedString(string: "Description\n", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)])
+    
+    // Add line spacing after "Description" header
+    let style = NSMutableParagraphStyle()
+    style.lineSpacing = 10
+    let range = NSMakeRange(0, attributedText.string.characters.count)
+    attributedText.addAttribute(NSParagraphStyleAttributeName, value: style, range: range)
+    
+    // Concat app description if not nil
+    if let desc = app?.desc {
+      attributedText.append(NSAttributedString(string: desc, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 11), NSForegroundColorAttributeName: UIColor.darkGray]))
+    }
+    
+    return attributedText
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -89,6 +106,7 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
     
     if indexPath.item == 1 {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptionCellId, for: indexPath) as! AppDetailDescriptionCell
+      cell.textView.attributedText = descriptionAttributedText()
       return cell
     }
     cell.app = app
@@ -240,16 +258,30 @@ class AppDetailDescriptionCell: BaseCell {
     return tv
   }()
   
+  let dividerView: UIView = {
+    let divider = UIView()
+    divider.backgroundColor = UIColor.init(white: 0.4, alpha: 0.4)
+    return divider
+  }()
+  
   override func setupViews() {
     super.setupViews()
     
     addSubview(textView)
+    addSubview(dividerView)
+    
     textView.translatesAutoresizingMaskIntoConstraints = false
+    dividerView.translatesAutoresizingMaskIntoConstraints = false
     
     textView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
     textView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
     textView.topAnchor.constraint(equalTo: self.topAnchor, constant: 4).isActive = true
-    textView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4).isActive = true
+    textView.bottomAnchor.constraint(equalTo: dividerView.topAnchor, constant: -4).isActive = true
+    
+    dividerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14).isActive = true
+    dividerView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+    dividerView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    dividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true
   }
   
 }
