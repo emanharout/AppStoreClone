@@ -47,7 +47,7 @@ class ScreenshotsCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataS
   
   // Size Cell
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 200, height: frame.height)
+    return CGSize(width: 200, height: frame.height - 28)
   }
   
   // Inset Cells
