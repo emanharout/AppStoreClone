@@ -17,11 +17,14 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
   }
   
   private let headerId = "headerId"
+  private let cellId = "cellId"
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     collectionView?.register(AppDetailHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+    collectionView?.register(ScreenshotsCell.self, forCellWithReuseIdentifier: cellId)
+    
     collectionView?.backgroundColor = .white
     collectionView?.alwaysBounceVertical = true
   }
@@ -38,6 +41,21 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
   // Header Size
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
     return CGSize(width: view.frame.width, height: 170)
+  }
+  
+  // Number of Items
+  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 1
+  }
+  
+  // Dequeue Cell
+  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    return collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+  }
+  
+  // Size Cell
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: view.frame.width, height: 200) 
   }
 }
 

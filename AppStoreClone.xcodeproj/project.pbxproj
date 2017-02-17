@@ -18,6 +18,7 @@
 		03970B6B1E54C920009B6537 /* LargeCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03970B6A1E54C920009B6537 /* LargeCategoryCell.swift */; };
 		03970B6D1E54EFCD009B6537 /* CollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03970B6C1E54EFCD009B6537 /* CollectionHeader.swift */; };
 		03A009701E56203600CB7F01 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A0096F1E56203600CB7F01 /* AppDetailController.swift */; };
+		03A009721E56A5EE00CB7F01 /* ScreenshotsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A009711E56A5EE00CB7F01 /* ScreenshotsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		03970B6A1E54C920009B6537 /* LargeCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeCategoryCell.swift; sourceTree = "<group>"; };
 		03970B6C1E54EFCD009B6537 /* CollectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionHeader.swift; sourceTree = "<group>"; };
 		03A0096F1E56203600CB7F01 /* AppDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDetailController.swift; path = ../AppDetailController.swift; sourceTree = "<group>"; };
+		03A009711E56A5EE00CB7F01 /* ScreenshotsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScreenshotsCell.swift; path = ../ScreenshotsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				0333265A1E541E210064619B /* AppCell.swift */,
 				03970B6A1E54C920009B6537 /* LargeCategoryCell.swift */,
 				03970B6C1E54EFCD009B6537 /* CollectionHeader.swift */,
+				03A009711E56A5EE00CB7F01 /* ScreenshotsCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			files = (
 				033326491E5366480064619B /* FeaturedAppsViewController.swift in Sources */,
 				0333265B1E541E210064619B /* AppCell.swift in Sources */,
+				03A009721E56A5EE00CB7F01 /* ScreenshotsCell.swift in Sources */,
 				033326471E5366480064619B /* AppDelegate.swift in Sources */,
 				033326591E536EDF0064619B /* CategoryCell.swift in Sources */,
 				03A009701E56203600CB7F01 /* AppDetailController.swift in Sources */,
