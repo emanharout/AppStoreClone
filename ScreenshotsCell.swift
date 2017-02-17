@@ -10,6 +10,12 @@ import UIKit
 
 class ScreenshotsCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
+  var app: App? {
+    didSet {
+      collectionView.reloadData()
+    }
+  }
+  
   let collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
@@ -38,17 +44,23 @@ class ScreenshotsCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataS
   
   // Number of Items
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5
+    return app?.screenshots?.count ?? 0
   }
   
   // Dequeue Cell
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    return collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+    
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ScreenshotImageCell
+    
+    if let imageName = app?.screenshots?[indexPath.item] {
+      cell.imageView.image = UIImage(named: imageName)
+    }
+    return cell
   }
   
   // Size Cell
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 200, height: frame.height - 28)
+    return CGSize(width: 240, height: frame.height - 28)
   }
   
   // Inset Cells
@@ -71,6 +83,8 @@ class ScreenshotImageCell: BaseCell {
     
     addSubview(imageView)
     imageView.translatesAutoresizingMaskIntoConstraints = false
+    // Since scale aspect fit, image spills over, must mask to bounds
+    imageView.layer.masksToBounds = true
     
     imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
     imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true

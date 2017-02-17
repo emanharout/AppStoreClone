@@ -83,12 +83,16 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
   
   // Dequeue Cell
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    return collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ScreenshotsCell
+    
+    cell.app = app
+    
+    return cell
   }
   
   // Size Cell
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: view.frame.width, height: 200) 
+    return CGSize(width: view.frame.width, height: 170)
   }
 }
 
