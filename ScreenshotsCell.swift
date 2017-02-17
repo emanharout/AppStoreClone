@@ -51,7 +51,7 @@ class ScreenshotsCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataS
     collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
     collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     
-    dividerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14).isActive = true
+    dividerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14 ).isActive = true
     dividerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
     dividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     dividerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true

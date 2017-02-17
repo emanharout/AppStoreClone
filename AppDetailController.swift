@@ -116,6 +116,19 @@ class AppDetailController: UICollectionViewController, UICollectionViewDelegateF
   
   // Size Cell
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    
+    
+    // Return diff size based on Description cell
+    // Somehow these options passed into boundRect function of attr string gives us the rect and we use the textfield height to determine cell height
+    if indexPath.item == 1 {
+      let dummySize = CGSize(width: view.frame.width - 8 - 8, height: 1000)
+      let options = NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin)
+      
+      let rect = descriptionAttributedText().boundingRect(with: dummySize, options: options, context: nil)
+      // Add 30 because it usually cuts off
+      return CGSize(width: view.frame.width, height: rect.height + 30)
+    }
+    
     return CGSize(width: view.frame.width, height: 170)
   }
 }
