@@ -51,6 +51,13 @@ class AppDetailHeader: BaseCell {
     }
   }
   
+  let segmentedControl: UISegmentedControl = {
+    let sc = UISegmentedControl(items: ["Details","Reviews","Related"])
+    sc.tintColor = .darkGray
+    sc.selectedSegmentIndex = 0
+    return sc
+  }()
+  
   let imageView: UIImageView = {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFill
@@ -61,20 +68,39 @@ class AppDetailHeader: BaseCell {
   
   override func setupViews(){
     addSubview(imageView)
+    addSubview(segmentedControl)
     
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.backgroundColor = .yellow
+    segmentedControl.translatesAutoresizingMaskIntoConstraints = false
     
     imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14).isActive = true
     imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 14).isActive = true
-    
     imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
     
-    // Visual Format
-//    addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0(100)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
+    segmentedControl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40).isActive = true
+    segmentedControl.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40).isActive = true
+    segmentedControl.heightAnchor.constraint(equalToConstant: 34).isActive = true
+    segmentedControl.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+    
+    // Visual Format Helper Func
+//    addConstraints(with: "H:|-14-[v0(100)]", views: imageView)
   }
   
+}
+
+extension UIView {
+  func addConstraints(with format: String, views: UIView...) {
+    var viewsDict = [String: Any]()
+    
+    for (index, view) in views.enumerated() {
+      let key = "v\(index)"
+      viewsDict[key] = view
+      view.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDict))
+  }
 }
 
 class BaseCell: UICollectionViewCell {
